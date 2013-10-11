@@ -1,3 +1,11 @@
+require 'active_support/version'
+
+# Since ActiveSupport 4.0.0 String#constantize depends on const_missing behavior
+# from ActiveSupport::Dependencies.load_missing_constant, so we need to load it.
+if ActiveSupport::VERSION::MAJOR >= 4
+  require 'active_support/dependencies'
+end
+
 require 'active_support/dependencies/autoload'
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/integer/inflections'
